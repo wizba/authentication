@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/class-name-casing */
+
 
 
 export interface user  {
