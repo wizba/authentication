@@ -8,7 +8,7 @@ import { CoursesModule } from './courses/course.module';
 @Module({
   imports: [
     AuthModule,
-    MongooseModule.forRoot('mongodb://localhost/authentication'),
+    MongooseModule.forRoot('mongodb://mongo/authentication'),
     CoursesModule
   ],
   controllers: [AppController],
