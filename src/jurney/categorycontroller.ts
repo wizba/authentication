@@ -3,7 +3,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { Catergory, Stack } from './jurneyModels/category.models';
 import { CategoryService } from './category.service';
 
-@Controller('jurney')
+@Controller('category')
 export class CategoryController {
 
     constructor(private categoryService:CategoryService){}
@@ -35,9 +35,16 @@ export class CategoryController {
         return this.categoryService.getAllCatergories();
     }
 
-    @Get('catergory/:id')
+    @Get(':id')
     get_category_by_id(@Param('id') id)
     {
-        return this.categoryService
+        return this.categoryService.getCatergoryById(id);
+    }
+
+    //get cartegory by name
+    @Get('name/:name')
+    get_category_by_name(@Param('name') name:string)
+    {
+        return this.categoryService.getCatergoryByName(name);
     }
 }

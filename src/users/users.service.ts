@@ -10,10 +10,8 @@ export type User = any;
 export class UsersService {
   private readonly users: User[];
 
-  constructor(@InjectModel('user') private userRepository:Model<_User>) {
-  }
-  
-  
+  constructor(@InjectModel('user') private userRepository:Model<_User>) {}
+
   async createUser(userObject) {
     
      const newUser = await new this.userRepository(userObject)
