@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { Catergory, Stack } from './jurneyModels/category.models';
 import { CategoryService } from './category.service';
 
@@ -14,7 +14,7 @@ export class CategoryController {
     testJurney()
     {
         this.catergory ={
-            title:'Medicine',
+            title:'Engineering',
             //course
             stacks:[]
         };
@@ -27,5 +27,17 @@ export class CategoryController {
         
         
         return this.categoryService.createCatergory(this.catergory);
+    }
+
+    @Get('all')
+    get_all_catergories()
+    {
+        return this.categoryService.getAllCatergories();
+    }
+
+    @Get('catergory/:id')
+    get_category_by_id(@Param('id') id)
+    {
+        return this.categoryService
     }
 }
