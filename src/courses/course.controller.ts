@@ -1,42 +1,25 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
-interface CourseDto{
-     title:string;
-    description:string;
-}
+import { Controller, Get } from '@nestjs/common';
+import { CourseService } from './course.service';
+import { CourseDto } from './couseModels/course.dto';
 
 @Controller('course')
 export class CourseController {
+    constructor(private courseService:CourseService){}
+    course:CourseDto;
 
-    my_courses:CourseDto[]=[]; 
+    @Get('/test')
+    testController(){
 
-    @Get('greet')
-    testing()
-    {
-        return 'tested';
+        this.course={
+            courseName:'IDC', 
+            description:'something'
+        }
+        return this.courseService.createCourse(this.course);
     }
-
-    @Post('my_course')
-    course(@Body() courseDto:CourseDto)
+    @Get('/all')
+    getCOurse()
     {
-        this.my_courses.push(courseDto);
-        return courseDto;
+        return this.courseService.findAllCourses();
     }
-
-    @Get('All')
-    getAllCourses()
-    {
-        return this.my_courses;
-    }
-
-    @Put('my_course/:id')
-    updateCourse(@Param('id') id,@Body() courseDto:CourseDto)
-    {
-        this.my_courses[id] =courseDto;
-    }
-
-    @Delete('my_course/:id')
-    deleteCourse(@Param('id') id)
-    {
-        this.my_courses.splice(id,1);
-    }
+    
 }
