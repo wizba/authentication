@@ -3,8 +3,7 @@ import { _Catergory } from './jurneyModels/catergory.document';
 import { Model, DocumentQuery } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Catergory } from './jurneyModels/category.models';
-import { threadId } from 'worker_threads';
-import { type } from 'os';
+
 
 @Injectable()
 export class CategoryService {
@@ -43,7 +42,6 @@ export class CategoryService {
     async getCatergoryByName(name:string)
     {
         const catergory = await this.categoryRepository.findOne({title:name}).exec();
-
         return catergory;
     }
 
