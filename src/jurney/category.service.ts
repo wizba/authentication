@@ -29,8 +29,7 @@ export class CategoryService {
     }
 
     //gets catergory by id
-    getCatergoryById(id:string)
-    {
+    getCatergoryById(id:string){
         const catergory = this.categoryRepository.findById(id);
          return catergory;
     }

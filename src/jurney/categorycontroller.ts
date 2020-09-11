@@ -10,20 +10,30 @@ export class CategoryController {
 
     catergory:Catergory;
     tech_stack:Stack;
+    tech_stack2:Stack;
     @Get('test')
     testJurney()
     {
         this.catergory ={
-            title:'Engineering',
+            title:'Science',
             //course
             stacks:[]
         };
         this.tech_stack={
-            stack_title:'Mean Stack',
+            stack_title:'Medicine',
             Modules:['5f57597dbec15519c07875ff','5f5759a101ee6f19c6ca3763','5f5759af31017119cac1e07a']
         };
+        this.tech_stack2={
+            stack_title:'',
+            Modules:['5f5759c436beb219d6ade357','5f5759d4d804a919d800cf65','5f5759af31017119cac1e07a']
+        };
 
+        this.tech_stack2={
+            stack_title:'.Net',
+            Modules:['5f5759c436beb219d6ade357','5f5759d4d804a919d800cf65','5f5759af31017119cac1e07a']
+        };
         this.catergory.stacks.push(this.tech_stack);
+        this.catergory.stacks.push(this.tech_stack2);
         
         
         return this.categoryService.createCatergory(this.catergory);
