@@ -31,31 +31,32 @@ export class UsersService {
 
   //adding a new course or subject
   coses: Course[] = [];
-  
+
   async addCourse(
     catergory_name: string,
-    my_course?: Course,
-    catergory?: Catergory,
+    my_course?: Course
   ) {
 
-   const email ='williamrabs@gmail.com';
+    const email ='william@123.com';
+    let save_category=false;
+
     const my_user = this._findOne(email);
 
-    if ((await my_user).Catergory.length > 0) {
+    //when the Catergory exists
+    if ((await my_user).Catergory != undefined &&  (await my_user).Catergory.length>0) {
       for (let index = 0; index < (await my_user).Catergory.length; index++) {
-        if ((await my_user).Catergory[index]['title'] == catergory_name) {
+        save_category =false;
+        if ((await my_user).Catergory[index]['title'] == catergory_name && !save_category) {
           (await my_user).Catergory[index]['corses'].push(my_course);
-        } else {
-          const coses: Course[] = [];
-          coses.push(my_course);
-
-          (await my_user).Catergory.push({
-            title: catergory_name,
-            corses: coses,
-          });
+          break;
+        }else{
+          save_category = true;
+          
         }
       }
-    } else {
+    } 
+    //when the Catergory does not exists 
+    if(save_category) {
       const coses: Course[] = [];
       coses.push(my_course);
 
@@ -63,6 +64,8 @@ export class UsersService {
         title: catergory_name,
         corses: coses,
       });
+
+      save_category = false;
     }
    
     return this.userRepository.findOneAndUpdate(

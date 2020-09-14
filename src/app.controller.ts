@@ -3,7 +3,6 @@ import { Controller, Request, Post, UseGuards, Get, Body, Res, Param, NotFoundEx
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
-import { Course } from './users/userModels/user.dto';
 
 
 

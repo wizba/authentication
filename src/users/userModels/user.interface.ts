@@ -10,6 +10,5 @@ export interface _User extends Document {
     email:string;
     created:Date;
     password:string;
-   
     Catergory?:Catergory[];
 }

@@ -6,4 +6,5 @@ export const userSchema = new mongoose.Schema({
     password:String,
     Catergory:[],
     created: { type: Date, default: Date.now }
+
 })
